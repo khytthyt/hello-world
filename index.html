@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khit Thit Thwe | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap');
+        
+        body { 
+            background-color: #000000; 
+            color: white; 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; 
+            cursor: none; 
+        }
+
+        .cursor { 
+            width: 15px; height: 15px; background: #00ff00; /* Neon green for visibility */
+            border-radius: 50%; position: fixed; 
+            pointer-events: none; z-index: 9999; 
+            mix-blend-mode: difference;
+        }
+        
+        /* High Contrast Social Cards - No Fading */
+        .social-card { 
+            background: #FFFFFF !important; /* Solid bright white */
+            color: #000000 !important;      /* Solid black text */
+            opacity: 1 !important;          /* Force 100% visibility */
+            border: 2px solid #333;
+            box-shadow: 10px 10px 0px rgba(255,255,255,0.1); /* Brutalist shadow */
+        }
+
+        .panel { width: 100vw; height: 100vh; flex-shrink: 0; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="cursor" id="cursor"></div>
+
+    <section class="h-screen flex flex-col items-center justify-center bg-black">
+        <h1 id="hero-text" class="text-7xl md:text-9xl font-900 tracking-tighter">HELLO WORLD</h1>
+        <p class="text-blue-500 tracking-[0.5em] text-sm mt-4 font-bold">KHIT THIT THWE</p>
+    </section>
+
+    <div id="horizontal-wrapper" class="overflow-hidden">
+        <div id="horizontal-content" class="flex w-[300vw]">
+            <div class="panel flex items-center justify-center border-r border-white/20">
+                <h2 class="text-6xl font-black">SCROLL</h2>
+            </div>
+            <div class="panel flex items-center justify-center bg-blue-600">
+                <h2 class="text-6xl font-black text-white">SWIPE</h2>
+            </div>
+            <div class="panel flex items-center justify-center">
+                <h2 class="text-6xl font-black">CONNECT</h2>
+            </div>
+        </div>
+    </div>
+
+    <section class="min-h-screen py-20 flex flex-col items-center justify-center px-6 bg-[#0a0a0a]">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-black uppercase tracking-tighter">Social Profiles</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-6xl">
+            
+            <a href="https://www.facebook.com/khytthyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-blue-600 hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">Facebook</b>
+                <span class="font-bold">@khytthyt</span>
+            </a>
+
+            <a href="https://m.me/khytthyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-blue-400 hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">Messenger</b>
+                <span class="font-bold">Contact</span>
+            </a>
+
+            <a href="https://www.instagram.com/khytthyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-pink-600 hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">Instagram</b>
+                <span class="font-bold">@khytthyt</span>
+            </a>
+
+            <a href="https://www.threads.net/@khytthyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-black hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">Threads</b>
+                <span class="font-bold">@khytthyt</span>
+            </a>
+
+            <a href="https://wa.me/959753575529" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-green-500 hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">WhatsApp</b>
+                <span class="font-bold">+959753575529</span>
+            </a>
+
+            <a href="viber://chat?number=959753575529" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-purple-600 hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">Viber</b>
+                <span class="font-bold">+959753575529</span>
+            </a>
+
+            <a href="https://www.youtube.com/@KhitThitThwe" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-red-600 hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">YouTube</b>
+                <span class="font-bold">@KhitThitThwe</span>
+            </a>
+
+            <a href="https://x.com/khyt.thyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-black hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">X / Twitter</b>
+                <span class="font-bold">@khyt.thyt</span>
+            </a>
+
+            <a href="https://www.tiktok.com/@khitthitthwe" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-black hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">TikTok</b>
+                <span class="font-bold">@khitthitthwe</span>
+            </a>
+
+            <a href="https://t.me/khitthitthwe" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-blue-500 hover:text-white hover:scale-105 transition-all">
+                <b class="text-xs uppercase">Telegram</b>
+                <span class="font-bold">@khitthitthwe</span>
+            </a>
+
+            <a href="mailto:thwaykhitthit@gmail.com" class="social-card col-span-1 md:col-span-2 p-6 rounded-lg flex flex-col items-center hover:bg-gray-200 hover:scale-105 transition-all">
+                <b class="text-xs uppercase">Email Me</b>
+                <span class="font-bold">thwaykhitthit@gmail.com</span>
+            </a>
+        </div>
+
+        <footer class="mt-24 text-gray-600 font-bold text-[10px] tracking-widest uppercase">
+            © 2026 KHIT THIT THWE
+        </footer>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.05 });
+        });
+
+        // Horizontal Scroll Logic
+        gsap.to(".panel", {
+            xPercent: -200,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#horizontal-wrapper",
+                pin: true,
+                scrub: 1,
+                end: () => "+=2000"
+            }
+        });
+
+        // Cursor scaling on interaction
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('mouseenter', () => gsap.to(cursor, { scale: 3 }));
+            link.addEventListener('mouseleave', () => gsap.to(cursor, { scale: 1 }));
+        });
+    </script>
+</body>
+</html>
