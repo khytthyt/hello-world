@@ -19,32 +19,51 @@
         }
 
         .cursor { 
-            width: 15px; height: 15px; background: #00ff00; /* Neon green for visibility */
+            width: 15px; height: 15px; background: #00ff00; 
             border-radius: 50%; position: fixed; 
             pointer-events: none; z-index: 9999; 
             mix-blend-mode: difference;
         }
         
-        /* High Contrast Social Cards - No Fading */
         .social-card { 
-            background: #FFFFFF !important; /* Solid bright white */
-            color: #000000 !important;      /* Solid black text */
-            opacity: 1 !important;          /* Force 100% visibility */
+            background: #FFFFFF !important; 
+            color: #000000 !important;      
+            opacity: 1 !important;          
             border: 2px solid #333;
-            box-shadow: 10px 10px 0px rgba(255,255,255,0.1); /* Brutalist shadow */
+            box-shadow: 10px 10px 0px rgba(255,255,255,0.1); 
         }
 
         .panel { width: 100vw; height: 100vh; flex-shrink: 0; }
         ::-webkit-scrollbar { display: none; }
+
+        /* Custom animation for the scroll line */
+        @keyframes scrollLine {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            50.1% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+        .scroll-anim {
+            animation: scrollLine 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+        }
     </style>
 </head>
 <body>
 
     <div class="cursor" id="cursor"></div>
 
-    <section class="h-screen flex flex-col items-center justify-center bg-black">
-        <h1 id="hero-text" class="text-7xl md:text-9xl font-900 tracking-tighter">HELLO WORLD</h1>
-        <p class="text-blue-500 tracking-[0.5em] text-sm mt-4 font-bold">KHIT THIT THWE</p>
+    <section class="h-screen flex flex-col items-center justify-center bg-black relative">
+        <div class="text-center">
+            <h1 id="hero-text" class="text-7xl md:text-9xl font-900 tracking-tighter">HELLO WORLD</h1>
+            <p class="text-blue-500 tracking-[0.5em] text-sm mt-4 font-bold uppercase">Khit Thit Thwe</p>
+        </div>
+
+        <div id="scroll-indicator" class="absolute bottom-10 flex flex-col items-center">
+            <p class="text-[10px] tracking-[0.4em] text-gray-500 mb-4 uppercase font-bold">Scroll for more</p>
+            <div class="w-[1px] h-16 bg-blue-500/20 relative overflow-hidden">
+                <div class="absolute inset-0 bg-blue-500 scroll-anim"></div>
+            </div>
+        </div>
     </section>
 
     <div id="horizontal-wrapper" class="overflow-hidden">
@@ -67,7 +86,6 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-6xl">
-            
             <a href="https://www.facebook.com/khytthyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-blue-600 hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">Facebook</b>
                 <span class="font-bold">@khytthyt</span>
@@ -147,6 +165,18 @@
                 pin: true,
                 scrub: 1,
                 end: () => "+=2000"
+            }
+        });
+
+        // Fade out Scroll Indicator on scroll
+        gsap.to("#scroll-indicator", {
+            opacity: 0,
+            y: -20,
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "100px top",
+                scrub: true
             }
         });
 
