@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap');
         
@@ -36,15 +37,13 @@
         .panel { width: 100vw; height: 100vh; flex-shrink: 0; }
         ::-webkit-scrollbar { display: none; }
 
-        /* Custom animation for the scroll line */
-        @keyframes scrollLine {
-            0% { transform: scaleY(0); transform-origin: top; }
-            50% { transform: scaleY(1); transform-origin: top; }
-            50.1% { transform: scaleY(1); transform-origin: bottom; }
-            100% { transform: scaleY(0); transform-origin: bottom; }
+        /* Custom subtle bounce for the arrow */
+        @keyframes customBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
         }
-        .scroll-anim {
-            animation: scrollLine 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+        .animate-scroll {
+            animation: customBounce 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -58,10 +57,12 @@
             <p class="text-blue-500 tracking-[0.5em] text-sm mt-4 font-bold uppercase">Khit Thit Thwe</p>
         </div>
 
-        <div id="scroll-indicator" class="absolute bottom-10 flex flex-col items-center">
-            <p class="text-[10px] tracking-[0.4em] text-gray-500 mb-4 uppercase font-bold">Scroll for more</p>
-            <div class="w-[1px] h-16 bg-blue-500/20 relative overflow-hidden">
-                <div class="absolute inset-0 bg-blue-500 scroll-anim"></div>
+        <div id="scroll-indicator" class="absolute bottom-10 flex flex-col items-center cursor-pointer group transition-all duration-300 hover:scale-110">
+            <p class="text-[10px] tracking-[0.4em] text-gray-500 mb-2 uppercase font-bold group-hover:text-blue-400">Scroll for more</p>
+            <div class="animate-scroll">
+                <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"></path>
+                </svg>
             </div>
         </div>
     </section>
@@ -80,7 +81,7 @@
         </div>
     </div>
 
-    <section class="min-h-screen py-20 flex flex-col items-center justify-center px-6 bg-[#0a0a0a]">
+    <section id="social-section" class="min-h-screen py-20 flex flex-col items-center justify-center px-6 bg-[#0a0a0a]">
         <div class="text-center mb-12">
             <h2 class="text-5xl font-black uppercase tracking-tighter">Social Profiles</h2>
         </div>
@@ -90,52 +91,42 @@
                 <b class="text-xs uppercase">Facebook</b>
                 <span class="font-bold">@khytthyt</span>
             </a>
-
             <a href="https://m.me/khytthyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-blue-400 hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">Messenger</b>
                 <span class="font-bold">Contact</span>
             </a>
-
             <a href="https://www.instagram.com/khytthyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-pink-600 hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">Instagram</b>
                 <span class="font-bold">@khytthyt</span>
             </a>
-
             <a href="https://www.threads.net/@khytthyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-black hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">Threads</b>
                 <span class="font-bold">@khytthyt</span>
             </a>
-
             <a href="https://wa.me/959753575529" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-green-500 hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">WhatsApp</b>
                 <span class="font-bold">+959753575529</span>
             </a>
-
             <a href="viber://chat?number=959753575529" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-purple-600 hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">Viber</b>
                 <span class="font-bold">+959753575529</span>
             </a>
-
             <a href="https://www.youtube.com/@KhitThitThwe" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-red-600 hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">YouTube</b>
                 <span class="font-bold">@KhitThitThwe</span>
             </a>
-
             <a href="https://x.com/khyt.thyt" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-black hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">X / Twitter</b>
                 <span class="font-bold">@khyt.thyt</span>
             </a>
-
             <a href="https://www.tiktok.com/@khitthitthwe" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-black hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">TikTok</b>
                 <span class="font-bold">@khitthitthwe</span>
             </a>
-
             <a href="https://t.me/khitthitthwe" target="_blank" class="social-card p-6 rounded-lg flex flex-col items-center hover:bg-blue-500 hover:text-white hover:scale-105 transition-all">
                 <b class="text-xs uppercase">Telegram</b>
                 <span class="font-bold">@khitthitthwe</span>
             </a>
-
             <a href="mailto:thwaykhitthit@gmail.com" class="social-card col-span-1 md:col-span-2 p-6 rounded-lg flex flex-col items-center hover:bg-gray-200 hover:scale-105 transition-all">
                 <b class="text-xs uppercase">Email Me</b>
                 <span class="font-bold">thwaykhitthit@gmail.com</span>
@@ -148,7 +139,7 @@
     </section>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
         // Custom Cursor
         const cursor = document.getElementById('cursor');
@@ -168,6 +159,11 @@
             }
         });
 
+        // Click to Scroll Feature
+        document.getElementById('scroll-indicator').addEventListener('click', () => {
+            gsap.to(window, {duration: 1, scrollTo: "#horizontal-wrapper", ease: "power2.inOut"});
+        });
+
         // Fade out Scroll Indicator on scroll
         gsap.to("#scroll-indicator", {
             opacity: 0,
@@ -181,7 +177,7 @@
         });
 
         // Cursor scaling on interaction
-        document.querySelectorAll('a').forEach(link => {
+        document.querySelectorAll('a, #scroll-indicator').forEach(link => {
             link.addEventListener('mouseenter', () => gsap.to(cursor, { scale: 3 }));
             link.addEventListener('mouseleave', () => gsap.to(cursor, { scale: 1 }));
         });
